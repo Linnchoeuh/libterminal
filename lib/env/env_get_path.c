@@ -8,7 +8,7 @@
 ** *****************************************************************************
 */
 
-#include "terminal.h"
+#include "terminal_env.h"
 
 char **env_get_path(char **env)
 {
@@ -18,7 +18,7 @@ char **env_get_path(char **env)
 
 	if ((path_var = env_get_var("PATH", env)) == NULL)
 		return (NULL);
-	path = term_split_char(path_var, ':');
+	path = term_split_str(path_var, ':');
 	free(path_var);
 	return (path);
 }

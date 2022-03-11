@@ -59,22 +59,19 @@ static char *term_absolute_path(char *path,
 			 				 	char **env)
 {
 	char *pwd;
-	char *tmp;
 	char *absolute_path;
 	char **split_pwd;
 	char **relative_path;
 
 	pwd = env_get_var("PWD", env);
-	split_pwd = term_split_char(pwd, '/');
+	split_pwd = term_split_str(pwd, '/');
 	free(pwd);
-	relative_path = term_split_char(path, '/');
+	relative_path = term_split_str(path, '/');
 	path_generator(&split_pwd, relative_path);
-	absolute_path = term_merge_char(split_pwd, "/", -1);
-	term_free_split(split_pwd);
-	term_free_split(relative_path);
-	tmp = absolute_path;
-	absolute_path = term_str_append(absolute_path, "/");
-	free(tmp);
+	absolute_path = term_split_merge(split_pwd, "/", -1);
+	term_split_free(split_pwd);
+	term_split_free(relative_path);
+	term_str_append(&absolute_path, "/");
 	return (absolute_path);
 }
 

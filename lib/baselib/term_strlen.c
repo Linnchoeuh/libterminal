@@ -8,7 +8,7 @@
 ** *****************************************************************************
 */
 
-#include "terminal.h"
+#include "terminal_baselib.h"
 
 size_t term_strlen(char *s)
 {

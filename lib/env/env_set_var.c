@@ -8,7 +8,7 @@
 ** *****************************************************************************
 */
 
-#include "terminal.h"
+#include "terminal_env.h"
 
 static int env_update_var(char   **set,
 						  char   **env,
@@ -17,20 +17,20 @@ static int env_update_var(char   **set,
 	char **env_var;
 	char *env_data;
 
-	if ((env_var = term_split_char(env[i], '=')) == NULL)
+	if ((env_var = term_split_str(env[i], '=')) == NULL)
 		return (-1);
 	if (term_strcasecmp(set[0], env_var[0]) == 0)
 	{
-		env_data = term_merge_char(set, "=", -1);
-		term_free_split(set);
+		env_data = term_split_merge(set, "=", -1);
+		term_split_free(set);
 		if (env_data == NULL)
 			return (-1);
 		free(env[i]);
 		env[i] = env_data;
-		term_free_split(env_var);
+		term_split_free(env_var);
 		return (1);
 	}
-	term_free_split(env_var);
+	term_split_free(env_var);
 	return (0);
 }
 
@@ -47,7 +47,7 @@ bool env_set_var(char *var_name,
 		(set[0] = term_strdup(var_name))  == NULL ||
 		(set[1] = term_strdup(content))   == NULL)
 	{
-		term_free_split(set);
+		term_split_free(set);
 		return (false);
 	}
 	set[2] = NULL;
@@ -60,7 +60,7 @@ bool env_set_var(char *var_name,
 			return (false);
 		i++;
 	}
-	term_free_split(set);
+	term_split_free(set);
 	return (false);
 }
 

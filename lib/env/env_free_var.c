@@ -8,7 +8,7 @@
 ** *****************************************************************************
 */
 
-#include "terminal.h"
+#include "terminal_env.h"
 
 void env_free_var(char **env)
 {

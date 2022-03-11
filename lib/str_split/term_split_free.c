@@ -5,14 +5,14 @@
 **
 ** term_free_split.c - 2022
 **
-** print the content of a char**
+** Entirely free all the occurence if a char **
+** At least require a NULL pointer at the end of the char **
 ** *****************************************************************************
 */
 
-#include "terminal.h"
+#include "terminal_strsplit.h"
 
-void term_print_split(char **splitted,
-					  char *separator)
+void term_split_free(char **splitted)
 {
 	size_t i;
 
@@ -21,11 +21,9 @@ void term_print_split(char **splitted,
 	i = 0;
 	while (splitted[i] != NULL)
 	{
-		write(STDOUT_FILENO, splitted[i], term_strlen(splitted[i]));
-		write(STDOUT_FILENO, separator, term_strlen(separator));
+		free(splitted[i]);
 		++i;
 	}
-	write(STDOUT_FILENO, "\n", 1);
-	write(STDOUT_FILENO, "\033[00m", 6);
+	free(splitted);
 }
 

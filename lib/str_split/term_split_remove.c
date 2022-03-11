@@ -8,7 +8,7 @@
 ** *****************************************************************************
 */
 
-#include "terminal.h"
+#include "terminal_strsplit.h"
 
 bool term_split_remove(char    ***split,
 					   ssize_t pos)

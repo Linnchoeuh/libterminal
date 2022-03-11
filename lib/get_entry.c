@@ -23,7 +23,7 @@ char **get_entry(char *entry_header,
 	write(STDOUT_FILENO, entry_header, term_strlen(entry_header));
 	if ((command = read_entry(block_sigint)) == NULL)
 		return (NULL);
-	splitted_command = term_split_char(command, ' ');
+	splitted_command = term_split_str(command, ' ');
 	free(command);
 	return (splitted_command);
 }

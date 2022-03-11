@@ -3,21 +3,21 @@
 ** lenny.vigeon <lenny.vigeon@student-station>
 ** Ecole 89 - 14/02/2022 10:00:00
 **
-** term_split_len.c - 2022
+** term_str_append.c - 2022
 **
 ** *****************************************************************************
 */
 
-#include "terminal_strsplit.h"
+#include "terminal_baselib.h"
 
-size_t term_split_len(char **split)
+bool term_str_append(char **target,
+				   		char *merge)
 {
-	size_t len;
+	char *new_str;
 
-	if (split == NULL)
-		return (0);
-	len = 0;
-	while (split[len] != NULL)
-		len++;
-	return (len);
+	if ((new_str = term_fuse_str(*target, merge)) == NULL)
+		return (false);
+	free(*target);
+	*target = new_str;
+	return (true);
 }

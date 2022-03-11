@@ -8,7 +8,7 @@
 ** *****************************************************************************
 */
 
-#include "terminal.h"
+#include "terminal_baselib.h"
 
 int	term_strcasecmp(const char	*a,
 					const char	*b)

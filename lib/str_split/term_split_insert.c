@@ -8,7 +8,7 @@
 ** *****************************************************************************
 */
 
-#include "terminal.h"
+#include "terminal_strsplit.h"
 
 void term_apply_insert(char    **split,
 					   char    ***new_split,

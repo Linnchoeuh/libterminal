@@ -9,7 +9,7 @@
 ** *****************************************************************************
 */
 
-#include "terminal.h"
+#include "terminal_strsplit.h"
 
 #define MEM_FAIL "Memory allocation failed.\n"
 
@@ -55,7 +55,7 @@ static char *get_element(char 	*str,
 	return (element);
 }
 
-char **term_split_char(char *str,
+char **term_split_str(char *str,
 					   char parser)
 {
 	char   **splitted;
@@ -75,7 +75,7 @@ char **term_split_char(char *str,
 		if ((splitted[i] = get_element(str, parser, &k)) == NULL)
 		{
 			write(STDERR_FILENO, MEM_FAIL, 27);
-			term_free_split(splitted);
+			term_split_free(splitted);
 			return (NULL);
 		}
 		i++;

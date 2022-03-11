@@ -8,6 +8,10 @@
 #define		__TERMINAL_STRSPLIT_H__
 
 #include	<stdlib.h>
+#include	<stdbool.h>
+#include	<unistd.h>
+
+#include	"terminal_baselib.h"
 
 /**
  * @brief Free a (char **)
@@ -15,7 +19,7 @@
  * @param splitted The (char **) you want to free.
  * Must have NULL terminator at his end
  */
-void		term_free_split(char		**splitted);
+void		term_split_free(char		**splitted);
 
 /**
  * @brief Print in STDOUT the (char **) given in splitted
@@ -24,7 +28,7 @@ void		term_free_split(char		**splitted);
  * @param separator Between each occurrence of the (char **),
  * you will be able to add an intermediary str of your choice.
  */
-void		term_print_split(char		**splitted,
+void		term_split_print(char		**splitted,
 				 char		*separator);
 
 
@@ -73,7 +77,7 @@ bool		term_split_remove(char		***split,
  * @return char** on success,
  * NULL if the memory allocation went wrong.
  */
-char		**term_split_char(char		*str,
+char		**term_split_str(char		*str,
 				  char		parser);
 
 
@@ -89,20 +93,8 @@ char		**term_split_char(char		*str,
  * @return char* on success,
  * NULL if the memory allocation went wrong.
  */
-char		*term_merge_char(char		**splitted,
+char		*term_split_merge(char		**splitted,
 				 char		*separation,
 				 ssize_t	merge_len);
-
-
-/**
- * @brief Merge two (char *) into one.
- *
- * @param str1 First one.
- * @param str2 Second one.
- * @return char* on success,
- * NULL if the memory allocation went wrong.
- */
-char		*term_str_append(char		*str1,
-				 char		*str2);
 
 #endif  /*      __TERMINAL_STRSPLIT_H__    */

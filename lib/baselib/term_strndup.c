@@ -8,7 +8,7 @@
 ** *****************************************************************************
 */
 
-#include "terminal.h"
+#include "terminal_baselib.h"
 
 char *term_strndup(const char	*s,
 				size_t	n)

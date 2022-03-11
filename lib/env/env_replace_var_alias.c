@@ -8,7 +8,7 @@
 ** *****************************************************************************
 */
 
-#include "terminal.h"
+#include "terminal_env.h"
 
 bool env_replace_var_alias(char **split_arg,
 					 	   char **env)

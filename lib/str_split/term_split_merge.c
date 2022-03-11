@@ -9,7 +9,7 @@
 ** *****************************************************************************
 */
 
-#include "terminal.h"
+#include "terminal_strsplit.h"
 
 static void write_into_char(char   *target,
 					 		size_t *i,
@@ -47,7 +47,7 @@ static size_t get_char_len(char    **splitted,
 	return (bytes);
 }
 
-char *term_merge_char(char 	  **splitted,
+char *term_split_merge(char 	  **splitted,
 					  char 	  *separation,
 					  ssize_t merge_len)
 {

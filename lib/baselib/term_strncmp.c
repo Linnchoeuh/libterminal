@@ -8,7 +8,7 @@
 ** *****************************************************************************
 */
 
-#include "terminal.h"
+#include "terminal_baselib.h"
 
 int		term_strncmp(const char	*first,
 					 const char	*second,

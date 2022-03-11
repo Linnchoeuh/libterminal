@@ -9,7 +9,7 @@
 ** *****************************************************************************
 */
 
-#include "terminal.h"
+#include "terminal_env.h"
 
 char *env_get_var(char *var_name,
 				  char **env)
@@ -21,18 +21,18 @@ char *env_get_var(char *var_name,
 	i = 0;
 	while (env[i] != NULL)
 	{
-		if ((get = term_split_char(env[i], '=')) == NULL)
+		if ((get = term_split_str(env[i], '=')) == NULL)
 			return (NULL);
 		if (term_strcasecmp(var_name, get[0]) == 0)
 		{
 			env_data = (get[1] != NULL) ? term_strdup(get[1]) :
 										  term_strdup("");
-			term_free_split(get);
+			term_split_free(get);
 			if (env_data == NULL)
 				return (NULL);
 			return (env_data);
 		}
-		term_free_split(get);
+		term_split_free(get);
 		i++;
 	}
 	return (NULL);

@@ -1,5 +1,5 @@
 *.o
-printo
+libterminal.a
 vgcore*
 main.c
 .vscode

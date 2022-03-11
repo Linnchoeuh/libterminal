@@ -8,6 +8,8 @@
 ** *****************************************************************************
 */
 
+#include "terminal_baselib.h"
+
 int	term_strcmp(const char *str1,
 				const char *str2)
 {
