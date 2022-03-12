@@ -25,7 +25,7 @@ This lib has four major function :
 - [**term_cd()**](#term_cd)
 - [**term_execute()**](#term_execute)
 
-
+It also have a set of function to [manage the environment variable](#the-env-set-of-function).
 
 ### read_entry()
 
@@ -114,6 +114,30 @@ Let you execute programs installed (like ```ls```) or not (like ```./a.out```).
 The parameter **cmd** is the program you want to launch.
 
 The parameter **env** is just the environment variable.
+
+
+
+## The env set of function
+This will help you to manage the environment variable you get in a main like this :
+```c
+#include <terminal.h>
+
+int main(int argc, char **argv, char **env)
+{
+  // And then here, use the env var in paramter
+  return (0);
+}
+```
+### Here's are the avaible function :
+- **env_enable_modification()** *Necessary for some function.*
+- **env_var_free()**
+- **env_get_var()**
+- **env_add_var()** *Needs env_enable_modification() to be called, to work properly.*
+- **env_delete_var()** *Needs env_enable_modification() to be called, to work properly.*
+- **env_set_var()** *Needs env_enable_modification() to be called, to work properly.*
+- **env_get_var_pos()**
+- **env_get_path()**
+
 
 ## Issues
 No issues to deplore, nor than memory error or leak. But feel free to report bug :).
