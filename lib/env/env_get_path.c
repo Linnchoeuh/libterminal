@@ -16,7 +16,7 @@ char **env_get_path(char **env)
 	char **path;
 
 
-	if ((path_var = env_get_var("PATH", env)) == NULL)
+	if ((path_var = env_get_var(env, "PATH")) == NULL)
 		return (NULL);
 	path = term_split_str(path_var, ':');
 	free(path_var);

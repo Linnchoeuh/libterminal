@@ -22,7 +22,7 @@ bool env_replace_var_alias(char	**env,
 		if (split_arg[i][0] == '$')
 		{
 			if ((env_content =
-				env_get_var(&split_arg[i][1], env)) == NULL)
+				env_get_var(env, &split_arg[i][1])) == NULL)
 				return (false);
 			free(split_arg[i]);
 			split_arg[i] = env_content;
