@@ -16,7 +16,7 @@ char **term_split_dup(char **split)
 	char **split_copy;
 
 	i = 0;
-	split_copy = malloc(term_split_len(split) + 1);
+	split_copy = malloc((term_split_len(split) + 1) * sizeof(char*));
 	if (split_copy == NULL)
 		return (NULL);
 	while (split[i] != NULL)
