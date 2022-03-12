@@ -78,8 +78,13 @@ bool env_replace_var_alias(char	**env,
 
 /**
  * @brief Create a dynamically memory allocation of the (char**) env
- * variable. The call of this function allow you to use :
- * - term_cd() - env_set_var() - env_add_var() - env_delete_var()
+ * variable. You only have to call it once (Generally in the main at the start of the program).
+ * The call of this function allow you to use :
+ * - term_cd() (You can still use it without call it,
+ *  but you have to set the env parameter at NULL then.)
+ * - env_set_var()
+ * - env_add_var()
+ * - env_delete_var()
  *
  * @param env The adress of (char**) environment variable.
  * env must be statically allocated, if not it will make memory leak.
