@@ -64,6 +64,8 @@ static char *term_absolute_path(char *path,
 	char **relative_path;
 
 	pwd = env_get_var(env, "PWD");
+	if (pwd == NULL)
+		return(NULL);
 	split_pwd = term_split_str(pwd, '/');
 	free(pwd);
 	relative_path = term_split_str(path, '/');
