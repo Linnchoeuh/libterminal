@@ -63,7 +63,9 @@ int		term_execute(const char		*cmd,
  * the real cd command.
  *
  * @param path Where you want to go.
- * @param env Environment variable (Optional but this remove feature)
+ * @param env Environment variable (Optional but this remove features)
+ * You must use env_enable_modification()
+ * in order to use this function.
  * @return true if cd moved to the aked directory,
  * false if it failed to go to the asked directory.
  */

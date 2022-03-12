@@ -17,11 +17,11 @@ static void term_update_pwd(char *path,
 {
 	char *old_pwd;
 
-	old_pwd = env_get_var("PWD", env);
-	env_set_var("PWD", path, env);
+	old_pwd = env_get_var(env, "PWD");
+	env_set_var(env, "PWD", path);
 	if (old_pwd != NULL)
 	{
-		env_set_var("OLDPWD", old_pwd, env);
+		env_set_var(env, "OLDPWD", old_pwd);
 		free(old_pwd);
 	}
 }
@@ -30,7 +30,7 @@ static bool term_cd_home(char **env)
 {
 	char *path_home;
 
-	if ((path_home = env_get_var("HOME", env)) == NULL)
+	if ((path_home = env_get_var(env, "HOME")) == NULL)
 		return (false);
 	chdir(path_home);
 	term_update_pwd(path_home, env);
@@ -63,7 +63,7 @@ static char *term_absolute_path(char *path,
 	char **split_pwd;
 	char **relative_path;
 
-	pwd = env_get_var("PWD", env);
+	pwd = env_get_var(env, "PWD");
 	split_pwd = term_split_str(pwd, '/');
 	free(pwd);
 	relative_path = term_split_str(path, '/');
