@@ -9,6 +9,11 @@
 
 #include	<stdlib.h>
 #include	<stdbool.h>
+#include	<stdarg.h>
+#include	<unistd.h>
+
+#define TERM_TOLOWER(c) (((c) >= 'A' && (c) <= 'Z') ? ((c) + ('a' - 'A')) : (c))
+#define TERM_TOUPPER(c) (((c) >= 'a' && (c) <= 'z') ? ((c) - ('a' - 'A')) : (c))
 
 char		*term_strdup(char		*s);
 
@@ -29,8 +34,6 @@ int		term_strncmp(const char		*first,
 
 int		term_strcasecmp(const char	*a,
 				const char	*b);
-
-int		term_tolower(int c);
 
 /**
  * @brief Merge two (char *) into one.
@@ -54,5 +57,19 @@ char		*term_fuse_str(char		*str1,
  */
 bool term_str_append(char **target,
 				   		char *merge);
+
+/**
+ * @brief Makes possible to fuse more than two str a the same time.
+ * You can precise how many element you want to fuse in len,
+ * but also set at -1 and just put a NULL a the of your list of str.
+ *
+ * @param len The amount of str to fuse. -1 to fuse them all,
+ * but you have to add a NULL at the end of yout list.
+ * @param ... Only expect str (char *) or NULL.
+ *
+ * @return char* The fusion of all the str given.
+ * NULL on failure.
+ */
+char *term_str_chain_fuse(ssize_t len, ...);
 
 #endif  /*      __TERMINAL_BASELIB_H__    */

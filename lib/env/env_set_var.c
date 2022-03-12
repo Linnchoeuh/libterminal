@@ -34,9 +34,9 @@ static int env_update_var(char   **set,
 	return (0);
 }
 
-bool env_set_var(char *var_name,
-				 char *content,
-				 char **env)
+bool env_set_var(char **env,
+				 char *var_name,
+				 char *content)
 {
 	int    status;
 	size_t i;

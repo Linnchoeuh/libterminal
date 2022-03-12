@@ -3,36 +3,31 @@
 ** lenny.vigeon <lenny.vigeon@student-station>
 ** Ecole 89 - 14/02/2022 10:00:00
 **
-** - env_get_var.c -
+** - env_get_var_pos.c -
 **
 ** *****************************************************************************
 */
 
 #include "terminal_env.h"
 
-char *env_get_var(char **env,
-				  char *var_name)
+ssize_t env_get_var_pos(char **env,
+					   char *var_name)
 {
 	size_t i;
 	char   **get;
-	char   *env_data;
 
 	i = 0;
 	while (env[i] != NULL)
 	{
 		if ((get = term_split_str(env[i], '=')) == NULL)
-			return (NULL);
+			return (-2);
 		if (term_strcasecmp(var_name, get[0]) == 0)
 		{
-			env_data = (get[1] != NULL) ? term_strdup(get[1]) :
-										  term_strdup("");
 			term_split_free(get);
-			if (env_data == NULL)
-				return (NULL);
-			return (env_data);
+			return (i);
 		}
 		term_split_free(get);
 		i++;
 	}
-	return (NULL);
+	return (-1);
 }

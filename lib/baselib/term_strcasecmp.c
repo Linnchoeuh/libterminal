@@ -16,9 +16,9 @@ int	term_strcasecmp(const char	*a,
 	size_t i;
 
 	i = 0;
-	while (term_tolower(a[i]) == term_tolower(b[i]) &&
+	while (TERM_TOLOWER(a[i]) == TERM_TOLOWER(b[i]) &&
 	    	a[i] != 0 && b[i] != 0)
 		++i;
-  	return (term_tolower(a[i]) - term_tolower(b[i]));
+  	return (TERM_TOLOWER(a[i]) - TERM_TOLOWER(b[i]));
 }
 

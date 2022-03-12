@@ -10,8 +10,8 @@
 
 #include "terminal_env.h"
 
-bool env_replace_var_alias(char **split_arg,
-					 	   char **env)
+bool env_replace_var_alias(char	**env,
+						   char	**split_arg)
 {
 	size_t i;
 	char   *env_content;
