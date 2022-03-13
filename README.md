@@ -1,7 +1,7 @@
 # libterminal
 > You have to include the file `terminal.h` in order to use this lib.
 
-> You must add the -l printo flag at compilation.
+> You must add the -lterminal flag at compilation.
 
 **There's more info about each function in the .h files of the library** 
 
