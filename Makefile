@@ -45,7 +45,7 @@ fclean:
 		-or -name "a.out" -delete
 	@$(ECHO) $(GREEN) "All temporal file deleted!" $(DEFLT)
 	@find -name $(FULLNAME) -delete
-	@$(ECHO) $(GREEN) "Executable deleted!" $(DEFLT)
+	@$(ECHO) $(GREEN) "$(FULLNAME) deleted!" $(DEFLT)
 
 re: 	fclean all
 
