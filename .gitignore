@@ -1,4 +1,5 @@
 *.o
+*.a
 libterminal.a
 vgcore*
 main.c
