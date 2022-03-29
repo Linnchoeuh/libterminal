@@ -63,8 +63,7 @@ static char **splitted_absolute(char *relative_path,
 	}
 	pass = path_generator(&split_pwd, split_relative_path);
 	term_split_free(split_relative_path);
-	if (!pass ||
-		term_split_insert(&split_pwd, "/", 0))
+	if (!pass)
 	{
 		term_split_free(split_pwd);
 		return (NULL);
@@ -75,6 +74,7 @@ static char **splitted_absolute(char *relative_path,
 char *term_get_absolute_path(char *relative_path,
 			 				 char **env)
 {
+	char *tmp;
 	char *absolute_path;
 	char **split_absolute_path;
 
@@ -83,5 +83,8 @@ char *term_get_absolute_path(char *relative_path,
 		return (NULL);
 	absolute_path = term_split_merge(split_absolute_path, "/", -1);
 	term_split_free(split_absolute_path);
+	tmp = absolute_path;
+	absolute_path = term_str_fuse("/", absolute_path);
+	free(tmp);
 	return (absolute_path);
 }
