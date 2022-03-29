@@ -11,8 +11,8 @@
 
 #include "terminal_baselib.h"
 
-char *term_fuse_str(char *str1,
-					  char *str2)
+char *term_str_fuse(char *str1,
+					char *str2)
 {
   	char *fuse_str;
 	size_t i;

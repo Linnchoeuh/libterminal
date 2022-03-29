@@ -25,7 +25,7 @@ static void term_executer(char **split_arg,
 		program_command = split_arg[0];
 		while (program_command != NULL && path[i] != NULL)
 		{
-			split_arg[0] = term_fuse_str(path[i], "/");
+			split_arg[0] = term_str_fuse(path[i], "/");
 			term_str_append(&split_arg[0], program_command);
 			(*out) = execve(split_arg[0], split_arg, env);
 			free(split_arg[0]);

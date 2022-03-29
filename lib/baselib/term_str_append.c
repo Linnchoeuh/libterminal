@@ -15,7 +15,7 @@ bool term_str_append(char **target,
 {
 	char *new_str;
 
-	if ((new_str = term_fuse_str(*target, merge)) == NULL)
+	if ((new_str = term_str_fuse(*target, merge)) == NULL)
 		return (false);
 	free(*target);
 	*target = new_str;

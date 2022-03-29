@@ -15,25 +15,25 @@
 #define TERM_TOLOWER(c) (((c) >= 'A' && (c) <= 'Z') ? ((c) + ('a' - 'A')) : (c))
 #define TERM_TOUPPER(c) (((c) >= 'a' && (c) <= 'z') ? ((c) - ('a' - 'A')) : (c))
 
-char		*term_strdup(char		*s);
+char *term_strdup(char *s);
 
-char		*term_strndup(const char	*s,
-			      size_t		n);
+char *term_strndup(const char *s,
+			      size_t n);
 
-size_t		term_strlen(char		*s);
+size_t term_strlen(char	*s);
 
-size_t		term_strnlen(const char		*s,
-			     size_t		n);
+size_t term_strnlen(const char *s,
+			    	size_t n);
 
-int		term_strcmp(const char		*str1,
-			    const char		*str2);
+int	term_strcmp(const char *str1,
+			    const char *str2);
 
-int		term_strncmp(const char		*first,
-			     const char		*second,
-			     size_t		length);
+int	term_strncmp(const char *first,
+			     const char	*second,
+			     size_t	length);
 
-int		term_strcasecmp(const char	*a,
-				const char	*b);
+int	term_strcasecmp(const char	*a,
+					const char	*b);
 
 /**
  * @brief Merge two (char *) into one.
@@ -43,8 +43,8 @@ int		term_strcasecmp(const char	*a,
  * @return char* on success,
  * NULL if the memory allocation went wrong.
  */
-char		*term_fuse_str(char		*str1,
-				 char		*str2);
+char		*term_str_fuse(char	*str1,
+						   char	*str2);
 
 /**
  * @brief Add at the next of target str, the merge content.
@@ -56,7 +56,7 @@ char		*term_fuse_str(char		*str1,
  * @return true on success, false on failure
  */
 bool term_str_append(char **target,
-				   		char *merge);
+				   	 char *merge);
 
 /**
  * @brief Makes possible to fuse more than two str a the same time.
