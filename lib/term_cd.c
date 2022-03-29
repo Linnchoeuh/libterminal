@@ -38,45 +38,6 @@ static bool term_cd_home(char **env)
 	return (true);
 }
 
-static void path_generator(char ***split_pwd,
-						   char **relative_path)
-{
-	size_t i;
-
-	i = 0;
-	while (relative_path[i] != NULL)
-	{
-		if (term_strcmp(relative_path[i], "..") == 0 ||
-			term_strcmp(relative_path[i], "../") == 0)
-			term_split_remove(split_pwd, -1);
-		else
-			term_split_insert(split_pwd, relative_path[i], -1);
-		i++;
-	}
-}
-
-static char *term_absolute_path(char *path,
-			 				 	char **env)
-{
-	char *pwd;
-	char *absolute_path;
-	char **split_pwd;
-	char **relative_path;
-
-	pwd = env_get_var(env, "PWD");
-	if (pwd == NULL)
-		return(NULL);
-	split_pwd = term_split_str(pwd, '/');
-	free(pwd);
-	relative_path = term_split_str(path, '/');
-	path_generator(&split_pwd, relative_path);
-	absolute_path = term_split_merge(split_pwd, "/", -1);
-	term_split_free(split_pwd);
-	term_split_free(relative_path);
-	term_str_fuse("/", absolute_path);
-	return (absolute_path);
-}
-
 bool term_cd(char *path,
 			 char **env)
 {
@@ -90,7 +51,7 @@ bool term_cd(char *path,
 		return (false);
 	}
 	if (env != NULL &&
-	   (absolute_path = term_absolute_path(path, env)) != NULL)
+	   (absolute_path = term_get_absolute_path(path, env)) != NULL)
 	{
 		term_update_pwd(absolute_path, env);
 		free(absolute_path);

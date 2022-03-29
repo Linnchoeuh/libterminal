@@ -27,7 +27,7 @@
  * @return char* On success a char with what was written in STDIN,
  * NULL if CTRL+D is invoked or if it fails.
  */
-char		*read_entry(bool		block_sigint);
+char *read_entry(bool block_sigint);
 
 
 /**
@@ -41,8 +41,8 @@ char		*read_entry(bool		block_sigint);
  * @param block_sigint Block CTRL+C emited signal.
  * @return char**
  */
-char		**get_entry(char		*entry_header,
-			    bool		block_sigint);
+char **get_entry(char *entry_header,
+				 bool block_sigint);
 
 
 /**
@@ -54,8 +54,8 @@ char		**get_entry(char		*entry_header,
  * @param env Environment variable
  * @return int Executed program output
  */
-int		term_execute(const char		*cmd,
-			     char		**env);
+int	term_execute(const char	*cmd,
+			     char **env);
 
 
 /**
@@ -69,8 +69,20 @@ int		term_execute(const char		*cmd,
  * @return true if cd moved to the aked directory,
  * false if it failed to go to the asked directory.
  */
-bool		term_cd(char			*path,
-			char			**env);
+bool term_cd(char *path,
+			 char **env);
+
+/**
+ * @brief Takes a relative path and
+ * return it's absolute equivalent.
+ *
+ * @param relative_path a (char*) of the relative path.
+ * @param env Environment variable.
+ * @return char* of the absolute path,
+ * NULL on failure.
+ */
+char *term_get_absolute_path(char *relative_path,
+			 				 char **env);
 
 #endif  /*      __TERMINAL_H__    */
 

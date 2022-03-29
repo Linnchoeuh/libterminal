@@ -52,7 +52,7 @@ size_t term_split_len(char **split);
  * -1 means to add it at the end of the (char**).
  *
  * @return true on success,
- * false on failure. (On failure the split var will be not modified).
+ * false on failure. (On failure the split var will be not modified)
  */
 bool term_split_insert(char	***split,
 				  	   char	*new_char,
@@ -66,7 +66,8 @@ bool term_split_insert(char	***split,
  * @param pos The postition of the element you want to remove.
  * -1 means to remove the last occurence of the (char**).
  *
- * @return true on success, false on failure.
+ * @return true on success,
+ * false on failure. (On failure the split var will be not modified)
  */
 bool term_split_remove(char	***split,
 					   ssize_t pos);
