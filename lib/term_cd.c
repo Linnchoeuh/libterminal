@@ -51,6 +51,7 @@ bool term_cd(char *path,
 		return (false);
 	}
 	if (env != NULL &&
+		term_strcmp(path, ".") != 0 &&
 	   (absolute_path = term_get_absolute_path(path, env)) != NULL)
 	{
 		term_update_pwd(absolute_path, env);
